@@ -1,0 +1,17 @@
+version: "2"
+services:
+  dev:
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    volumes:
+      - "./:/usr/src/app"
+    volumes_from:
+      - node_modules
+    ports:
+      - "8080:8080"
+
+  node_modules:
+    image: node:7
+    volumes:
+      - /usr/src/app/node_modules
