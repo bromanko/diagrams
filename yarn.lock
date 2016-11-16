@@ -868,7 +868,7 @@ crypto-browserify@~3.2.6:
     ripemd160 "0.2.0"
     sha.js "2.2.6"
 
-dagre@0.7.4:
+dagre, dagre@0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/dagre/-/dagre-0.7.4.tgz#de72f0e74a550ce11ce638f0a136fed712398022"
   dependencies:

@@ -5,7 +5,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    hot: true
   },
   module: {
     loaders: [

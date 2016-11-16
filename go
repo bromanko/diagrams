@@ -31,11 +31,18 @@ function helptext {
     echo "Usage: ./go <command>"
     echo ""
     echo "Available commands are:"
-    echo "    start                   Starts the development server"
+    echo "    run                   Runs a yarn command. Defaults to "start""
+    echo "    bash [cmd]            Starts a new bash shell in the Docker container"
+
 }
 
-function start {
-  ${DC} run --rm ${DC_RUN_PARAMS} ${DEV} yarn run start
+function run {
+  local CMD=${1-start}
+  ${DC} run --rm ${DC_RUN_PARAMS} ${DEV} yarn run ${CMD}
+}
+
+function bash {
+  ${DC} run --rm ${DC_RUN_PARAMS} ${DEV} $1
 }
 
 function test {
@@ -61,7 +68,9 @@ echo "Service wrapper for ${NAME}. current version: ${VERSION}"
 case "$1" in
     help) helptext
     ;;
-    start) shift; start
+    run) shift; run
+    ;;
+    bash) shift; bash
     ;;
     *)
       helptext
