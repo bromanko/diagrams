@@ -1,6 +1,8 @@
+import './scss/main.scss';
+
 import Viz from 'viz.js';
 
-const src = 'digraph {a -> b;}';
+const src = 'digraph {One -> Two -> Three;}';
 
 const graphSvg = Viz(src, {
   format: 'svg',

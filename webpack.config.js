@@ -6,7 +6,9 @@ module.exports = {
   },
   devServer: {
     host: '0.0.0.0',
-    hot: true
+    hot: true,
+    progress: true,
+    colors: true
   },
   node: {
     fs: 'empty'
@@ -14,8 +16,8 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loader: "style!css"
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       },
       {
         test: /\.js$/,
