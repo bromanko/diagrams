@@ -1,29 +1,16 @@
-import joint from 'jointjs';
-import $ from 'jquery';
+import Viz from 'viz.js';
 
+const src = 'digraph {a -> b;}';
 
-const graph = new joint.dia.Graph;
-
-const paper = new joint.dia.Paper({
-  el: '#myholder',
-  width: 600,
-  height: 200,
-  model: graph,
-  gridSize: 1
+const graphSvg = Viz(src, {
+  format: 'svg',
+  engine: 'dot',
 });
 
-const rect = new joint.shapes.basic.Rect({
-  position: { x: 100, y: 30 },
-  size: { width: 100, height: 30 },
-  attrs: { rect: { fill: 'blue' }, text: { text: 'my box', fill: 'white' } }
-});
+const container = document.getElementById('graph-holder');
+container.innerHTML = graphSvg;
 
-const rect2 = rect.clone();
-rect2.translate(300);
-
-const link = new joint.dia.Link({
-  source: { id: rect.id },
-  target: { id: rect2.id }
-});
-
-graph.addCells([rect, rect2, link]);
+const svgEl = container.getElementsByTagName('svg')[0];
+svgEl.id = 'graph';
+svgEl.style.width = '100%';
+svgEl.style.height = '100%';
